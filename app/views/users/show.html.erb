@@ -1,5 +1,30 @@
-<p>User Info</p>
-<p><%= @user.name %></p>
-<p><%= @user.email %></p>
 
-	
+<div class="row col-md-12" style="text-align: center;">
+	<div class="col-md-3">
+		<h3>User Name</h3>
+		<p><%= @user.name %></p>
+	</div>
+	<div class="col-md-3">
+		<h3>Mail Id</h3>
+		<p><%= @user.email %></p>
+	</div>
+	<div class="col-md-3">
+		<h3>No Of Leaves left</h3>
+		<p><%= @user.leave_count %></p>
+	</div>
+</div>
+<div style="margin-top:170px; "><h3>Applied Leaves Info</h3></div>
+<table class="table table-striped">
+	<tr>
+	<th>Description</th>
+	<th>Date</th>
+	<th>Status</th>
+	</tr>
+	<tr>
+	<% @leaves.each do |leave| %>
+	<td><%= leave.reason.humanize %></td>
+	<td><%= leave.status.humanize %></td>
+	<td><%= leave.leave_date %></td>
+		</tr>
+		<% end %>
+</table>

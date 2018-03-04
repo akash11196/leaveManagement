@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20180227152647) do
     t.string   "reason"
     t.date     "leave_date"
     t.integer  "user_id"
-    t.integer  "status",     default: 1
+    t.integer  "status",     default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.index ["user_id"], name: "index_leaves_on_user_id"
@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(version: 20180227152647) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.integer  "leave_count"
+    t.integer  "leave_count",     default: 33
     t.string   "password_digest"
-    t.boolean  "is_admin"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.boolean  "is_admin",        default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
