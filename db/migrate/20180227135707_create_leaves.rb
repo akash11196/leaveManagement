@@ -4,7 +4,7 @@ class CreateLeaves < ActiveRecord::Migration[5.0]
       t.string :reason
       t.date :leave_date
       t.references :user, foreign_key: true
-      t.integer :status, default: 1
+      t.integer :status, default: 0
 
       t.timestamps
     end

@@ -1,0 +1,20 @@
+<div class="row col-md-12">
+	<div class="col-md-3">
+		<h3>Reason</h3>
+		<p><%= @leave.reason.humanize %></p>
+	</div>
+	<div class="col-md-3">
+		<h3>Leave date</h3>
+		<p><%= @leave.leave_date %></p>
+	</div>
+	<div class="col-md-3">
+		<!-- <h3>Status</h3> -->
+		<%= form_for(@leave) do |f| %>
+		 		<h3>Leave Status</h3>
+	 		 	<%= select_tag :status, options_for_select(Leave.statuses.map {|k, v| [k.humanize.capitalize, v]}) ,class: "form-control" %>
+	 		 	<%= f.submit "Act", class: "btn btn-primary" %>
+	 		 	</div>
+	
+		<% end %> 
+
+	</div>
