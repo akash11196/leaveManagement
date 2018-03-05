@@ -10,8 +10,11 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   get    '/showLeaves',  to: 'leaves#show'
   patch 'leaves/:id', to: 'leaves#update'
+  get   '/setleaves', to: 'user_admin_leaves#edit'
+  patch  'user_admin_leaves/:id',to:'user_admin_leaves#update'
   resources :users 
   resources :leaves
+  resources :user_admin_leaves
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
 
