@@ -1,0 +1,2 @@
+module UserAdminLeavesHelper
+end

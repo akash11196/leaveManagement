@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 		@users=User.all
 	end
 	def show
+		@userAdmin=UserAdminLeave.find(1)
 		@user=User.find(params[:id])
 		@leaves=Leave.where(user_id:@user.id)
 
