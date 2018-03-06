@@ -41,13 +41,14 @@ gem 'bcrypt', '~> 3.1.7'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'sqlite3'
+    gem 'pg', '~> 0.18'
+  #gem 'sqlite3'
 end
 
-group :development do
+group :production do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'pg'
+  gem 'pg' , '~> 0.18'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

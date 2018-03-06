@@ -13,6 +13,8 @@ class UsersController < ApplicationController
 	end
 	def create
 	@user = User.new(user_params)
+	@userAdmin=UserAdminLeave.find(1)
+	@user.leave_count=@userAdmin.leave_count
     if @user.save
        log_in @user
       flash[:success] = "Welcome to the Sample App!"
