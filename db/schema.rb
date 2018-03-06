@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180304123847) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "leaves", force: :cascade do |t|
     t.string   "reason"
     t.date     "leave_date"
@@ -19,15 +22,15 @@ ActiveRecord::Schema.define(version: 20180304123847) do
     t.integer  "status",     default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.index ["user_id"], name: "index_leaves_on_user_id"
+    t.index ["user_id"], name: "index_leaves_on_user_id", using: :btree
   end
 
   create_table "user_admin_leaves", force: :cascade do |t|
-    t.integer  "user_id_id"
+    t.integer  "users_id"
     t.integer  "leave_count"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["user_id_id"], name: "index_user_admin_leaves_on_user_id_id"
+    t.index ["users_id"], name: "index_user_admin_leaves_on_users_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,7 +41,9 @@ ActiveRecord::Schema.define(version: 20180304123847) do
     t.boolean  "is_admin",        default: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "leaves", "users"
+  add_foreign_key "user_admin_leaves", "users", column: "users_id"
 end
